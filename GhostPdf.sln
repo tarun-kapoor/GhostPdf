@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostScript", "..\TestPoc\GhostScript\GhostScript.csproj", "{B9052F9F-5B5B-4877-A754-4214301D6E9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9052F9F-5B5B-4877-A754-4214301D6E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9052F9F-5B5B-4877-A754-4214301D6E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9052F9F-5B5B-4877-A754-4214301D6E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9052F9F-5B5B-4877-A754-4214301D6E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BEB5091-3368-47A2-BA37-5A53E7721ED4}
+	EndGlobalSection
+EndGlobal
