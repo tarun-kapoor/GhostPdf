@@ -15,7 +15,7 @@ namespace GhostScriptNS
 
             //MergePdf();
 
-            //Get All Files
+            //Get All Files ina  directory
             List<FileInfo> _Files = new List<FileInfo>();
 
             foreach (var file in new DirectoryInfo(@"D:\PDF\Input").GetFiles("*.pdf").OrderBy(x=>x.Name))
@@ -63,19 +63,19 @@ namespace GhostScriptNS
         }
 
         /// <summary>
-        /// Creates a single PDF from multiple
+        /// Creates a single PDF from multiple at a specified location        
         /// </summary>
         private static void MergePdf()
         {
             String result = @"d:\PDF\Output\mergefile.pdf";
-            //create Document object
+            
             Document document = new Document();
-            //create PdfCopy object
+            //create PdfSmartCopy object
             PdfSmartCopy copy = new PdfSmartCopy(document, new FileStream(result, FileMode.Create));
             copy.SetFullCompression();
             //open the document
             document.Open();
-            //PdfReader variable
+            
             PdfReader reader = null;
             foreach (var file in new DirectoryInfo(@"D:\PDF\Output").GetFiles("*.pdf").OrderBy(x => x.Name))
             {
