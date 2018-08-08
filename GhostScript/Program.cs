@@ -33,10 +33,6 @@ namespace GhostScriptNS
 
             foreach (var file in _Files)
             {
-
-
-                PdfDocument doc = new PdfDocument();
-
                 PdfReader reader = new PdfReader(file.FullName);
                 
                 //Compress images, Specify quality as second paramter - 1 to 100
