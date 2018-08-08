@@ -36,6 +36,7 @@ namespace GhostScriptNS
 
 
                 PdfDocument doc = new PdfDocument();
+
                 PdfReader reader = new PdfReader(file.FullName);
                 
                 //Compress images, Specify quality as second paramter - 1 to 100
@@ -44,12 +45,15 @@ namespace GhostScriptNS
                 if (!Directory.Exists($@"D:\PDF\Output\{file.Directory.Name}")) Directory.CreateDirectory($@"D:\PDF\Output\{file.Directory.Name}");
 
                 using (PdfStamper stamper = new PdfStamper(reader, new FileStream($@"D:\PDF\Output\{file.Directory.Name}\{file.Name}", FileMode.Create), PdfWriter.VERSION_1_7))
-                {
+                {                    
                     // flatten form fields and close document
                     stamper.FormFlattening = true;
 
                     stamper.SetFullCompression();
-                    
+
+                    //IText document - http://itextsupport.com/apidocs/itext5/latest/com/itextpdf/text/pdf/PdfStamper.html
+                    //strength - true for 128 bit key length, false for 40 bit key length
+                    stamper.SetEncryption(true, "tk", "tk", PdfWriter.AllowPrinting);
                     stamper.Close();
                 }
 
