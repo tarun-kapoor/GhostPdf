@@ -18,18 +18,10 @@ namespace GhostScriptNS
             //Get All Files ina  directory
             List<FileInfo> _Files = new List<FileInfo>();
 
-            foreach (var file in new DirectoryInfo(@"D:\PDF\Input").GetFiles("*.pdf").OrderBy(x=>x.Name))
+            foreach (var file in new DirectoryInfo(@"D:\PDF\Input").GetFiles("*.pdf", SearchOption.AllDirectories).OrderBy(x=>x.Name))
             {
                 _Files.Add(file);
-            }
-
-            foreach (var directory in new DirectoryInfo(@"D:\PDF\Input").GetDirectories())
-            {
-                foreach (var file in directory.GetFiles("*.pdf").OrderBy(x => x.Name))
-                {
-                    _Files.Add(file);
-                }
-            }
+            }            
 
             foreach (var file in _Files)
             {
