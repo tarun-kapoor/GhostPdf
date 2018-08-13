@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GhostScriptNS
 {
@@ -21,19 +22,19 @@ namespace GhostScriptNS
             foreach (var file in new DirectoryInfo(@"D:\PDF\Input").GetFiles("*.pdf", SearchOption.AllDirectories).OrderBy(x=>x.Name))
             {
                 _Files.Add(file);
-            }            
+            }
 
-            foreach (var file in _Files)
+            Parallel.ForEach(_Files, file =>
             {
                 PdfReader reader = new PdfReader(file.FullName);
-                
+
                 //Compress images, Specify quality as second paramter - 1 to 100
                 ReduceResolution(reader, 7);
 
                 if (!Directory.Exists($@"D:\PDF\Output\{file.Directory.Name}")) Directory.CreateDirectory($@"D:\PDF\Output\{file.Directory.Name}");
 
                 using (PdfStamper stamper = new PdfStamper(reader, new FileStream($@"D:\PDF\Output\{file.Directory.Name}\{file.Name}", FileMode.Create), PdfWriter.VERSION_1_7))
-                {                    
+                {
                     // flatten form fields and close document
                     stamper.FormFlattening = true;
 
@@ -45,9 +46,9 @@ namespace GhostScriptNS
                     stamper.Close();
                 }
 
-                                
+
                 reader.Close();
-            }
+            });
 
             //MergePdf();
             _Files.Clear();
